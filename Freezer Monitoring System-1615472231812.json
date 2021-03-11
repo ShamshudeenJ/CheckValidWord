@@ -1,0 +1,1221 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 7,
+  "iteration": 1615472185043,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 25,
+      "panels": [],
+      "title": "Trend Plot",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-UB",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 18,
+        "x": 0,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Temperature - ${model_name}",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"temp_value\" FROM \"autogen\".\"freezer\" WHERE (\"freezer_model\" =~ /${model_name}/) AND $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Temperature",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1005",
+          "format": "celsius",
+          "label": "Temperature",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1006",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 1
+      },
+      "id": 12,
+      "options": {
+        "bgColor": "rgba(20, 22, 25, 0)",
+        "clockType": "custom",
+        "countdownSettings": {
+          "endCountdownTime": "2020-12-12T05:58:58+05:30",
+          "endText": "00:00:00"
+        },
+        "dateSettings": {
+          "dateFormat": "YYYY-MM-DD",
+          "fontSize": "20px",
+          "fontWeight": "normal",
+          "showDate": false
+        },
+        "mode": "time",
+        "timeSettings": {
+          "customFormat": "D-M-Y HH:mm:ss",
+          "fontSize": "24px",
+          "fontWeight": "bold"
+        },
+        "timezone": "",
+        "timezoneSettings": {
+          "fontSize": "12px",
+          "fontWeight": "normal",
+          "showTimezone": false,
+          "zoneFormat": "offsetAbbv"
+        }
+      },
+      "pluginVersion": "7.3.4",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "grafana-clock-panel"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 23,
+      "panels": [],
+      "title": "Map - Realtime",
+      "type": "row"
+    },
+    {
+      "circleMaxSize": "1",
+      "circleMinSize": "0",
+      "colors": [
+        "#5794F2",
+        "#5794F2",
+        "#73BF69",
+        "#F2495C"
+      ],
+      "datasource": "InfluxDB-UB",
+      "decimals": 3,
+      "esMetric": "Count",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "hideEmpty": false,
+      "hideZero": false,
+      "id": 2,
+      "initialZoom": "4.5",
+      "locationData": "table",
+      "mapCenter": "custom",
+      "mapCenterLatitude": "23.8",
+      "mapCenterLongitude": "77.9",
+      "maxDataPoints": 1,
+      "mouseWheelZoom": false,
+      "pluginVersion": "7.3.4",
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "spoc_name",
+        "latitudeField": "lng",
+        "longitudeField": "lat",
+        "metricField": "temp_value",
+        "queryType": "coordinates"
+      },
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"id\", \"lat\", \"lng\", \"temp_value\",\"spoc_name\" FROM \"autogen\".\"freezer\" WHERE (\"freezer_model\" =~ /${model_name}/)  AND $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "lat"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "lng"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": "-10,0,10",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Live Temperature data",
+      "transparent": true,
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "",
+      "unitSingle": "",
+      "valueName": "current"
+    },
+    {
+      "circleMaxSize": "1",
+      "circleMinSize": "0",
+      "colors": [
+        "#F2495C",
+        "#F2495C",
+        "#FF9830",
+        "#73BF69",
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "InfluxDB-UB",
+      "decimals": 3,
+      "esMetric": "Count",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "hideEmpty": false,
+      "hideZero": false,
+      "id": 3,
+      "initialZoom": "4",
+      "locationData": "table",
+      "mapCenter": "custom",
+      "mapCenterLatitude": "23.8",
+      "mapCenterLongitude": "77.9",
+      "maxDataPoints": 1,
+      "mouseWheelZoom": false,
+      "pluginVersion": "7.3.4",
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "id",
+        "latitudeField": "lng",
+        "longitudeField": "lat",
+        "metricField": "bt_value",
+        "queryType": "coordinates"
+      },
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"id\", \"lat\", \"lng\", \"bt_value\" FROM \"autogen\".\"freezer\" WHERE (\"freezer_model\" =~ /${model_name}/) AND $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "lat"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "lng"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "bt_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": "0,20,50,80,100",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Live Battery data",
+      "transparent": true,
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "",
+      "unitSingle": "",
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 21,
+      "panels": [],
+      "title": "Alert",
+      "type": "row"
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                10
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5s",
+        "frequency": "1s",
+        "handler": 1,
+        "message": "",
+        "name": "Temperature alert",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "9sIMs21Gz"
+          },
+          {
+            "uid": "I6F_P5xMk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-UB",
+      "description": "When Temperature of any sensor exceeds 5deC, a Webhook-IFTTT-Pushbullet notification will be sent to Shamshudeen Mobile",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 19,
+        "x": 0,
+        "y": 22
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 0.5,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "ID: 5000-6000",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"temp_value\" FROM \"autogen\".\"freezer\" WHERE $timeFilter AND \"id\" >= 5000 AND \"id\" < 6000",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "ID: 6000-7000",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"temp_value\" FROM \"autogen\".\"freezer\" WHERE $timeFilter AND \"id\" > 6000 AND \"id\" < 7000",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "ID: 7000-8000",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"temp_value\" FROM \"autogen\".\"freezer\" WHERE $timeFilter AND \"id\" >= 7000 AND \"id\" < 8000",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 10,
+          "visible": true
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Temperature - Consolidated",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1005",
+          "format": "celsius",
+          "label": "Temperature",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1006",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "InfluxDB-UB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 19,
+        "y": 22
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT count(distinct(\"id\")) FROM \"autogen\".\"freezer\" WHERE $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "distinct"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Active devices",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 19,
+      "panels": [],
+      "repeat": "model_name",
+      "scopedVars": {
+        "model_name": {
+          "selected": true,
+          "text": "Ken",
+          "value": "Ken"
+        }
+      },
+      "title": "Histogram",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-UB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 0,
+        "y": 33
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "model_name": {
+          "selected": true,
+          "text": "Ken",
+          "value": "Ken"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Histogram - Temperature",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "min": null,
+        "mode": "histogram",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:626",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:627",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "InfluxDB-UB",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "valueName": "last"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 11,
+        "y": 33
+      },
+      "id": 17,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 500,
+      "options": {
+        "anonymousTracking": true,
+        "authPassword": "",
+        "authUsername": "",
+        "composites": [],
+        "content": "graph LR\n      Latitude --> Temperature\n      Longitude--> Temperature\n      Temperature --> Battery\n      Model --> Latitude\n      Model --> Longitude\n\n\n    ",
+        "legend": {
+          "asTable": true,
+          "displayMode": "table",
+          "gradient": {
+            "enabled": true,
+            "show": true
+          },
+          "hideEmpty": false,
+          "hideZero": false,
+          "placement": "under",
+          "show": false,
+          "sortBy": "last",
+          "sortDesc": true,
+          "stats": [
+            "mean",
+            "last",
+            "min",
+            "max",
+            "sum"
+          ]
+        },
+        "maxWidth": true,
+        "mermaidServiceUrl": "",
+        "mermaidThemeVariablesDark": {
+          "classDiagram": {},
+          "common": {
+            "fontFamily": "Roboto,Helvetica Neue,Arial,sans-serif",
+            "textColor": "light-blue"
+          },
+          "flowChart": {},
+          "sequenceDiagram": {},
+          "stateDiagram": {},
+          "userJourneyDiagram": {}
+        },
+        "mermaidThemeVariablesLight": {
+          "classDiagram": {},
+          "common": {
+            "fontFamily": "Roboto,Helvetica Neue,Arial,sans-serif",
+            "textColor": "light-blue"
+          },
+          "flowChart": {
+            "nodeBorder": "yellow"
+          },
+          "sequenceDiagram": {},
+          "stateDiagram": {},
+          "userJourneyDiagram": {}
+        },
+        "metricCharacterReplacements": [],
+        "moddedSeriesVal": 0,
+        "mode": "content",
+        "nodeSize": {
+          "minHeight": 40,
+          "minWidth": 30
+        },
+        "pluginVersion": "1.7.1",
+        "style": "",
+        "useBackground": false,
+        "useBasicAuth": false,
+        "valueName": "last"
+      },
+      "pluginVersion": "1.7.1",
+      "scopedVars": {
+        "model_name": {
+          "selected": true,
+          "text": "Ken",
+          "value": "Ken"
+        }
+      },
+      "targets": [
+        {
+          "alias": "Latitude",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"lat\" FROM \"autogen\".\"freezer\" WHERE $timeFilter AND (\"freezer_model\" =~ /${model_name}/) ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "lat"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Longitude",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "lng"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Temperature",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"temp_value\" FROM \"autogen\".\"freezer\" WHERE $timeFilter AND (\"freezer_model\" =~ /${model_name}/) ",
+          "rawQuery": true,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Battery",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bt_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Model",
+          "groupBy": [],
+          "measurement": "freezer",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "query": "SELECT \"freezer_model\" FROM \"autogen\".\"freezer\" WHERE $timeFilter AND (\"freezer_model\" =~ /${model_name}/) ",
+          "rawQuery": true,
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "freezer_model"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "jdbranham-diagram-panel"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "Voltas"
+          ],
+          "value": [
+            "Voltas"
+          ]
+        },
+        "datasource": "InfluxDB-UB",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Freezer Model",
+        "multi": true,
+        "name": "model_name",
+        "options": [
+          {
+            "selected": true,
+            "text": "Ken",
+            "value": "Ken"
+          },
+          {
+            "selected": false,
+            "text": "LG",
+            "value": "LG"
+          },
+          {
+            "selected": false,
+            "text": "Voltas",
+            "value": "Voltas"
+          },
+          {
+            "selected": false,
+            "text": "Whirlpool",
+            "value": "Whirlpool"
+          }
+        ],
+        "query": "SELECT \"freezer_model\" FROM \"autogen\".\"freezer\" ",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Freezer Monitoring System",
+  "uid": "XS1MVV1Mz",
+  "version": 128
+}
